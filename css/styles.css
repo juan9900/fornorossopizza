@@ -14,6 +14,12 @@
   font-family: "Agino-moul";
   src: url("../fonts/Aginomoul.ttf");
 }
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 .hero {
   background-image: url("../img/pantallaxd.mp4");
   height: 120vh;
@@ -405,6 +411,7 @@ button {
 .mobile-nav.is-active {
   left: 0;
 }
+
 .splide__slide__container {
   text-align: center;
   margin-left: 5rem;
@@ -448,15 +455,19 @@ button {
   position: static;
 }
 
-.hoverable-promo {
-  margin: 0;
-  background-color: #690a00;
-  padding: 0.5rem 0;
+.promo-options-menu {
   width: 100%;
+  background-color: #690a00;
+  padding: 0.5rem 1rem;
 }
 
-.hoverable-promo:hover + .promo-plates {
-  display: flex;
+.hoverable-promo {
+  margin: 0;
+}
+
+.promo-options-menu:hover + .promo-plates {
+  opacity: 1;
+  z-index: 9999999;
 }
 
 .promo-plates-container {
@@ -468,22 +479,59 @@ button {
 
 .promo-plates {
   position: absolute;
-  z-index: 99999999999;
-  width: 20rem;
+  width: 100%;
   background-color: #690a00;
   padding: 0 0 0 0;
   left: 100%;
   bottom: 0;
-  /* opacity: 0; */
-  display: none;
+  opacity: 0;
+  display: flex;
+  transition: all 0.2s linear;
+  z-index: -999999;
+}
+
+li:not(.is-active.is-visible) .promo-options-menu + .promo-plates {
+  right: 100%;
+  left: auto;
+  opacity: 0;
+}
+
+.is-next .promo-options-menu + .promo-plates {
+  right: 100%;
+  left: auto;
+  opacity: 0;
+}
+
+.is-next .promo-options-menu:hover + .promo-plates {
+  opacity: 1;
+  right: 100%;
+  left: auto;
+  z-index: 9999999;
+}
+
+.is-next .promo-options-menu + .promo-plates:hover {
+  opacity: 1;
+  right: 100%;
+  left: auto;
+  z-index: 9999999;
+}
+
+li:not(.is-active.is-visible) .promo-options-menu:hover + .promo-plates {
+  opacity: 1;
+  right: 100%;
+  left: auto;
+  z-index: 9999999;
+}
+
+li:not(.is-active.is-visible) .promo-options-menu + .promo-plates:hover {
+  opacity: 1;
+  right: 100%;
+  left: auto;
+  z-index: 9999999;
 }
 
 .plato {
   width: 100%;
-  position: relative;
-  display: flex;
-  justify-content: flex-start;
-  transition: background-color 0.2s ease-in;
 }
 
 .plato img {
@@ -502,7 +550,8 @@ button {
 }
 
 .promo-plates:hover {
-  display: flex;
+  opacity: 1;
+  z-index: 99999999;
 }
 
 .promo-plates .plato:hover {
@@ -962,6 +1011,58 @@ button {
     height: 3.5rem;
   }
 
+  /* .hoverable-promo::after {
+    content: "";
+    background: url("../img/arrow.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 20px;
+    width: 30px;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.25s linear;
+    margin-left: 1rem;
+  } */
+
+  .splide__track {
+    overflow: inherit;
+  }
+  .promo-plates {
+    opacity: 1;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    height: fit-content;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    z-index: 99999999;
+  }
+
+  .promo-plates.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .promo-plates-container + .hoverable-promo::after {
+    transform: rotateX(180deg);
+  }
+
+  .arrow-down.rotate {
+    transform: rotateX(180deg);
+  }
+
+  .promo-plates .plato:hover {
+    background-color: inherit;
+  }
+
+  .plato:hover img {
+    opacity: 0;
+  }
+  .arrow-down {
+    width: 8%;
+    transition: all 0.15s linear;
+  }
+
   @keyframes crescendo {
     0% {
       transform: scale(0.7);
@@ -1048,6 +1149,15 @@ button {
   .smile-us {
     display: block;
     top: -1rem;
+  }
+}
+@media screen and (min-width: 701px) {
+  .arrow-down {
+    display: none;
+  }
+
+  .hoverable-promo {
+    width: 100%;
   }
 }
 @media screen and (min-width: 701px) and (max-width: 1023px) {
