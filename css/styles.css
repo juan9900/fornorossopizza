@@ -415,7 +415,7 @@ button {
   min-height: 25rem;
   transition: all 0.3s ease-in-out;
 }
-.splide__slide__container:hover {
+.splide__slide__container {
   background-color: #960e00;
 }
 
@@ -436,10 +436,81 @@ button {
   opacity: 0;
   transition: 0.3s all ease-in-out;
   transform: translateX(20px);
+  position: relative;
+  z-index: 2;
 }
-.splide__slide__container:hover .texto {
+.splide__slide__container .texto {
   opacity: 1;
   transform: translateX(0px);
+}
+
+.splide__slide {
+  position: static;
+}
+
+.hoverable-promo {
+  margin: 0;
+  background-color: #690a00;
+  padding: 0.5rem 0;
+  width: 100%;
+}
+
+.hoverable-promo:hover + .promo-plates {
+  display: flex;
+}
+
+.promo-plates-container {
+  font-family: "Agino-moul";
+  text-align: left;
+  color: #fff;
+  margin-top: 1rem;
+}
+
+.promo-plates {
+  position: absolute;
+  z-index: 99999999999;
+  width: 20rem;
+  background-color: #690a00;
+  padding: 0 0 0 0;
+  left: 100%;
+  bottom: 0;
+  /* opacity: 0; */
+  display: none;
+}
+
+.plato {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  transition: background-color 0.2s ease-in;
+}
+
+.plato img {
+  position: absolute;
+  bottom: 0%;
+  left: 100%;
+  width: 7rem;
+  opacity: 0;
+  transition: opacity 0.2s ease-in;
+}
+
+.promo-plates p {
+  padding: 0.5rem 1rem;
+  margin-bottom: 0;
+  position: relative;
+}
+
+.promo-plates:hover {
+  display: flex;
+}
+
+.promo-plates .plato:hover {
+  background-color: #4f0800;
+}
+
+.plato:hover img {
+  opacity: 1;
 }
 
 .header-images {
@@ -499,7 +570,7 @@ button {
   transition: 0.3s all ease-in-out;
   object-fit: scale-down;
 }
-.splide__slide__container:hover .header-images img:last-child {
+.splide__slide__container .header-images img:last-child {
   opacity: 1;
   transform: translateX(0px);
   animation: crescendo 1.5s alternate infinite ease-in;
