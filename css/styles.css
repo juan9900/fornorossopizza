@@ -416,11 +416,12 @@ button {
   text-align: center;
   margin-left: 5rem;
   margin-right: 1rem;
-  padding: 1rem;
+  padding: 1rem 1rem 2.5rem 1rem;
   margin-top: 2rem;
-  padding-bottom: 2.5rem;
+  /* padding-bottom: 2.5rem; */
   min-height: 25rem;
   transition: all 0.3s ease-in-out;
+  height: 90%;
 }
 .splide__slide__container {
   background-color: #960e00;
@@ -445,6 +446,7 @@ button {
   transform: translateX(20px);
   position: relative;
   z-index: 2;
+  text-transform: uppercase;
 }
 .splide__slide__container .texto {
   opacity: 1;
@@ -913,6 +915,10 @@ button {
     height: 27vh;
   }
 
+  .hamburger-container {
+    top: 5%;
+  }
+
   .pedidos img {
     width: 7rem;
   }
@@ -1011,21 +1017,34 @@ button {
     height: 3.5rem;
   }
 
-  /* .hoverable-promo::after {
-    content: "";
-    background: url("../img/arrow.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    position: absolute;
-    height: 20px;
-    width: 30px;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: transform 0.25s linear;
-    margin-left: 1rem;
-  } */
+  @keyframes crescendo {
+    0% {
+      transform: scale(0.7);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes circular {
+    from {
+      transform: rotate(0deg) translateX(50px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(50px) rotate(-360deg);
+    }
+  }
 
+  @keyframes crescendoSmall {
+    0% {
+      transform: scale(0.8);
+    }
+    100% {
+      transform: scale(1.2);
+    }
+  }
+}
+
+@media screen and (max-width: 850px) {
   .splide__track {
     overflow: inherit;
   }
@@ -1061,32 +1080,6 @@ button {
   .arrow-down {
     width: 8%;
     transition: all 0.15s linear;
-  }
-
-  @keyframes crescendo {
-    0% {
-      transform: scale(0.7);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  @keyframes circular {
-    from {
-      transform: rotate(0deg) translateX(50px) rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg) translateX(50px) rotate(-360deg);
-    }
-  }
-
-  @keyframes crescendoSmall {
-    0% {
-      transform: scale(0.8);
-    }
-    100% {
-      transform: scale(1.2);
-    }
   }
 }
 
@@ -1151,7 +1144,7 @@ button {
     top: -1rem;
   }
 }
-@media screen and (min-width: 701px) {
+@media screen and (min-width: 851px) {
   .arrow-down {
     display: none;
   }
