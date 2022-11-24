@@ -1,0 +1,52 @@
+@font-face {
+  font-family: "ULMGROTESK-MEDIUM";
+  src: url("../fonts/FONTSFREE-NET-ULMGROTESK-MEDIUM-2CDBC613774DB6ED499E18CFF9B882C6.TTF");
+}
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url("../fonts/Poppins-Regular.otf");
+}
+@font-face {
+  font-family: "ULMGROTESK-EXTRABOLD";
+  src: url("../fonts/FONTSFREE-NET-ULMGROTESK-EXTRABOLD-0B3118A57784E4D175EDB3A9CBA99B321.TTF");
+}
+@font-face {
+  font-family: "Agino-moul";
+  src: url("../fonts/Aginomoul.ttf");
+}
+
+:root {
+  --primary: #990f00;
+  --primaryDarker: #8d0e00;
+  --primaryOpacity: #990f0043;
+}
+
+body {
+  font-family: "Poppins-Regular";
+}
+h1 {
+  color: var(--primary);
+  font-family: "ULMGROTESK-MEDIUM";
+}
+
+h2 {
+  font-family: "ULMGROTESK-MEDIUM";
+}
+.primary {
+  background-color: var(--primary);
+  border: none;
+}
+
+.primary:hover {
+  background-color: var(--primaryDarker);
+}
+
+.link-primary:link,
+.link-primary:visited {
+  color: var(--primary);
+}
+
+.link-primary:hover {
+  color: var(--primary);
+  background-color: var(--primaryOpacity);
+}
