@@ -459,6 +459,14 @@ button {
   padding-bottom: 3rem;
 }
 
+.splide__arrow--next {
+  right: 0;
+}
+
+.splide__arrow--prev {
+  left: 0;
+}
+
 .promo-horario {
   font-size: 0.9em;
   text-align: center;
