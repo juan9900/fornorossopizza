@@ -414,14 +414,15 @@ button {
 
 .splide__slide__container {
   text-align: center;
-  margin-left: 5rem;
-  margin-right: 1rem;
-  padding: 1rem 1rem 2.5rem 1rem;
+  /* margin-left: 5rem; */
+  /* margin-right: 1rem; */
+  margin: 0 3rem;
+  padding: 1rem;
   margin-top: 2rem;
   /* padding-bottom: 2.5rem; */
   min-height: 25rem;
   transition: all 0.3s ease-in-out;
-  height: 90%;
+  height: 100%;
 }
 .splide__slide__container {
   background-color: #960e00;
@@ -455,6 +456,14 @@ button {
 
 .splide__slide {
   position: static;
+  padding-bottom: 3rem;
+}
+
+.promo-horario {
+  font-size: 0.9em;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 0;
 }
 
 .promo-options-menu {
@@ -465,6 +474,19 @@ button {
 
 .hoverable-promo {
   margin: 0;
+}
+
+.more-info {
+  cursor: pointer;
+  background-color: #690a00;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  font-family: "Agino-moul";
+}
+
+.more-info:hover {
+  color: #fff;
+  background-color: #4f0800;
 }
 
 .promo-options-menu:hover + .promo-plates {
@@ -1080,6 +1102,12 @@ button {
   .arrow-down {
     width: 8%;
     transition: all 0.15s linear;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 852px) {
+  .splide__slide {
+    /* padding: 0 3rem; */
   }
 }
 
