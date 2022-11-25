@@ -419,17 +419,39 @@
     </section>
     <section class="contact-zone">
       <div class="container">
-        <h2 class="text-center">¡Déjanos tu sugerencia!</h2>
-        <form class="formulario-email" action="https://formsubmit.co/fornorossomcbo22@gmail.com" method="POST">
-          <input type="text" placeholder="Nombre y apellido">
-          <input type="email" placeholder="Email">
-          <input type="number" placeholder="Número de teléfono">
-          <textarea name="" placeholder="Escribe tu sugerencia" id="" cols="30" rows="10"></textarea>
-          <div class="encuesta">
-            <button type="submit">Enviar</button>
+        <div class="club-form-container">
+          <h2 class="text-center mb-4 mb-lg-4">¡Únete al Club Forno!</h2>
+          <div class="col-11 col-lg-8 mb-3 m-auto" id="liveAlertPlaceholder"></div>
 
-          </div>
-        </form>
+          <form class="formulario-email col-lg-8  col-11 m-auto" id="club-form">
+
+            <div class="mb-3">
+              <input class="w-100 " type="text" name="firstName" id="firstName" placeholder="Nombre">
+            </div>
+
+            <div class="mb-3">
+              <input class="w-100" type="text" name="lastName" id="lastName" placeholder="Apellido">
+            </div>
+
+            <div class="mb-3">
+              <input class="w-100 " type="email" name="email" id="email" placeholder="Email">
+            </div>
+
+            <div class="input-group mb-3">
+              <!-- <span class="input-group-text">+58</span> -->
+              <!-- <input class="" type="number" name="phoneNumber" id="phoneNumber" placeholder="Número de teléfono"> -->
+              <span class="input-group-text" id="basic-addon1">+58</span>
+              <input type="text" class="phone-input form-control" placeholder="Número de teléfono" name="phoneNumber" id="phoneNumber">
+
+            </div>
+
+            <div class="encuesta">
+              <button type="submit">Enviar</button>
+
+            </div>
+          </form>
+        </div>
+        <h2 class="text-center mb-0 pb-5 subscribed-text d-none">¡Te has registrado con éxito en el <br> Club Forno!</h2>
       </div>
     </section>
 

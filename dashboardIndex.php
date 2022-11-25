@@ -6,7 +6,7 @@
     include('includes/header.php');
     include('modules/db.php');
 
-    $num_per_page = 10;
+    $num_per_page = 20;
 
     if(isset($_GET['page']) && $_GET['page'] >= 1){
         $page = $_GET['page'];
@@ -16,7 +16,7 @@
     }
 
     //If the page is 0 then it'll be 0-1*10 = 0 so the first result will be 0 and the last 10
-    $start_from = ($page-1)*10;
+    $start_from = ($page-1)*20;
 
     $sql = 'SELECT * FROM clients WHERE subscribedForno = ? limit ? , ?';
     $subscribedForno = 1;
@@ -34,8 +34,10 @@
                 <th scope="col"  class="d-none">#</th>
                 <th scope="col" class="fw-bold">Nombre</th>
                 <th scope="col" class="fw-bold">Apellido</th>
-                <th scope="col" class="fw-bold">Cédula</th>
+                <!-- <th scope="col" class="fw-bold">Cédula</th> -->
                 <th scope="col" class="fw-bold">Teléfono</th>
+                <th scope="col" class="fw-bold">Correo Electrónico</th>
+                <th scope="col" class="fw-bold">Acción</th>
                 </tr>
             </thead>
             <tbody >
@@ -56,19 +58,21 @@
                         echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
                     }
                     $result = $stmt->get_result();
-                    $events = $result->fetch_all(MYSQLI_ASSOC);
-                    if(count($events) < 1){ ?>
+                    $clients = $result->fetch_all(MYSQLI_ASSOC);
+                    if(count($clients) < 1){ ?>
                         <div class="alert alert-warning" role="alert">
                             No se encontraron clientes.
                         </div>
                     <?php }
-                    foreach($events as $event){ ?>
+                    foreach($clients as $client){ ?>
                             <tr class="table-row">
-                                <td class="d-none"><?php echo $event['id']?></td>
-                                <td data-title="Nombre:"><?php echo $event['firstName']?></td>
-                                <td data-title="Apellido:"><?php echo $event['lastName']?></td>
-                                <td data-title="Cédula:"><?php echo $event['identification']?></td>
-                                <td data-title="Teléfono:"><?php echo $event['phoneNumber']?></td>
+                                <td class="d-none"><?php echo $client['id']?></td>
+                                <td data-title="Nombre:"><?php echo $client['firstName']?></td>
+                                <td data-title="Apellido:"><?php echo $client['lastName']?></td>
+                                <!-- <td data-title="Cédula:"><?php echo $client['identification']?></td> -->
+                                <td data-title="Teléfono:"><?php echo $client['phoneNumber']?></td>
+                                <td data-title="Correo Electrónico"><?php echo $client['email']?></td>
+                                <td class="d-flex justify-content-center align-items-center" data-title="Acción"><button class="table-button" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btn-delete-client"><i class="fa-solid fa-trash"></i></button></td>
                             </tr>
                         <?php } 
 
@@ -98,11 +102,8 @@
                 if($pagesFromDB > 1){
                     $totalPages = $pagesFromDB;
                 }
-                echo $clients[0]['clientsCount'];
-                echo $pagesFromDB;
-                echo $totalPages;
                 ?>
-                <nav aria-label="Page navigation example">
+                <nav aria-label="Page navigation example" id="pagination-demo">
                     <ul class="pagination">
                     <li class="page-item <?php echo ($page == 1 ? 'disabled' : null)?>">
                         <a class="page-link" href="dashboardIndex.php?page=1" aria-label="Previous">
@@ -112,7 +113,7 @@
                     <li class="page-item <?php echo ($page == 1 ? 'disabled' : null)?>"><a class="page-link link-primary" href="dashboardIndex.php?page=<?php echo $page-1?>">Anterior</a></li>
                         <?php for($i = 1; $i <= $totalPages; $i++){?>
                         
-                        <li class="page-item <?php echo($page == $i ? 'disabled' : null)?>"><a class="page-link link-primary" href="dashboardIndex.php?page=<?php echo $i ?>"><?php echo $i?></a></li>
+                            <li class="page-item <?php echo($page == $i ? 'disabled' : null)?>"><a class="page-link link-primary" href="dashboardIndex.php?page=<?php echo $i ?>"><?php echo $i?></a></li>
                     
                         <?php }?>
                         <li class="page-item <?php echo ($page == $totalPages ? 'disabled' : null)?>"><a class="page-link link-primary" href="dashboardIndex.php?page=<?php echo $page+1?>">Siguiente</a></li>
@@ -127,10 +128,29 @@
                     
                 
     </main></div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar cliente</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Estás seguro de que deseas elminar al cliente?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="btn-delete-confirm">Si, eliminar</button>
+                </div>
+                </div>
+            </div>
+        </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/701b1fbb0c.js" crossorigin="anonymous"></script>
-    <script src="public/scripts/dashboard/dashboardEvents.js"></script>
-
+    <!-- <script src="public/scripts/dashboard/dashboardEvents.js"></script> -->
+    <script src="js/dashbaordIndex.js"></script>
 </div>
 </body>
 </html>

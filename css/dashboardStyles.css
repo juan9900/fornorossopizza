@@ -50,3 +50,10 @@ h2 {
   color: var(--primary);
   background-color: var(--primaryOpacity);
 }
+
+.table-button {
+  cursor: pointer;
+  color: var(--primary);
+  background: none;
+  border: none;
+}
