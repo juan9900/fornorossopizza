@@ -71,3 +71,56 @@ h2 {
 #btn-export-excel:hover {
   background-color: #005d00;
 }
+
+.next-simplified {
+  display: none;
+}
+.prev-simplified {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .content-table tbody,
+  .content-table tr,
+  .content-table td {
+    display: block;
+  }
+  .content-table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  .content-table td {
+    position: relative;
+    padding-left: 30%;
+    border: none;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9em;
+  }
+  .content-table td:before {
+    content: attr(data-title);
+    position: absolute;
+    left: 6px;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+  .content-table tr {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .next,
+  .prev {
+    display: none;
+  }
+
+  .next-simplified {
+    display: block;
+  }
+  .prev-simplified {
+    display: block;
+  }
+
+  li {
+    font-size: 0.8em;
+  }
+}

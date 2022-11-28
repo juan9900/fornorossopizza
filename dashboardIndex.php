@@ -36,7 +36,7 @@
         }?>
     </p>
         <button id="btn-export-excel" class="mb-3">Exportar tabla a Excel</button>
-        <table class="table table-bordered content-table" id="clientsTable">
+        <table class="table table-bordered content-table col-12 col-lg-11" id="clientsTable">
             <thead>
                 <tr>
                 <th scope="col"  class="d-none exclude">ID</th>
@@ -84,8 +84,8 @@
                                 <td data-title="Apellido:"><?php echo $client['lastName']?></td>
                                 <!-- <td data-title="Cédula:"><?php echo $client['identification']?></td> -->
                                 <td data-title="Teléfono:"><?php echo $client['phoneNumber']?></td>
-                                <td data-title="Correo Electrónico"><?php echo $client['email']?></td>
-                                <td data-title="Fecha de suscripción"><?php echo $client['subscriptionDate']?></td>
+                                <td data-title="Correo"><?php echo $client['email']?></td>
+                                <td data-title="Suscripción"><?php echo $client['subscriptionDate']?></td>
                                 <?php if($_SESSION['level'] == 'write'){?>
                                     <td class="d-flex justify-content-center align-items-center exclude" data-title="Acción"><button class="table-button" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btn-delete-client"><i class="fa-solid fa-trash"></i></button></td>
                                 <?php }?>
@@ -119,14 +119,14 @@
                     $totalPages = $pagesFromDB;
                 }
                 ?>
-                <nav aria-label="Page navigation example" id="pagination-demo">
-                    <ul class="pagination">
+                <nav aria-label="Page navigation example" id="pagination-demo" class="mb-3 d-flex justify-content-center align-items-center">
+                    <ul class="pagination w- m-auto">
                     <li class="page-item <?php echo ($page == 1 ? 'disabled' : null)?>">
                         <a class="page-link link-primary" href="dashboardIndex.php?page=1" aria-label="Previous">
                             <span  aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
-                    <li class="page-item <?php echo ($page == 1 ? 'disabled' : null)?>"><a class="page-link link-primary" href="dashboardIndex.php?page=<?php echo $page-1?>">Anterior</a></li>
+                    <li class="page-item prev <?php echo ($page == 1 ? 'disabled' : null)?>"><a class="page-link link-primary" href="dashboardIndex.php?page=<?php echo $page-1?>">Anterior</a></li>
                         
                     <?php if($_GET['page'] - 5 >= 1){?>
                             <li class="page-item disabled"><a class="page-link link-primary">...</a></li>
@@ -174,7 +174,7 @@ if ($i <= $totalPages) {
                         <?php if($_GET['page'] + 4 < $totalPages){?>
                             <li class="page-item disabled"><a class="page-link link-primary">...</a></li>
                         <?php } ?>
-                        <li class="page-item <?php echo ($page == $totalPages ? 'disabled' : null)?>"><a class="page-link link-primary" href="dashboardIndex.php?page=<?php echo $page+1?>">Siguiente</a></li>
+                        <li class="page-item next <?php echo ($page == $totalPages ? 'disabled' : null)?>"><a class="page-link link-primary" href="dashboardIndex.php?page=<?php echo $page+1?>">Siguiente</a></li>
                         <li class="page-item <?php echo ($page == $totalPages ? 'disabled' : null)?>">
                             <a class="page-link link-primary" href="dashboardIndex.php?page=<?php echo $totalPages?>" aria-label="Next">
                                 <span  aria-hidden="true">&raquo;</span>
@@ -183,7 +183,7 @@ if ($i <= $totalPages) {
                     </ul>
                     
                 </nav>
-                <a href="modules/logout.php" class="btn btn-danger" id="btn-cerrar-sesion">Cerrar sesión</a>
+                <a href="modules/logout.php" class="btn btn-danger mb-2" id="btn-cerrar-sesion">Cerrar sesión</a>
 
                 
     </main>
