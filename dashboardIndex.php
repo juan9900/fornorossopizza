@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include_once('./modules/getClients.php');
     if(!isset($_SESSION['id'])){
         header("Location: ./dashboardLogin.php?err=2");
     }
@@ -27,17 +28,19 @@
     <div>
     <main class="col-11 m-auto col-lg-9 mt-4">
         <h1>CLUB FORNO</h1>
-        <h2>Clientes suscritos</h2>
-        <table class="table table-bordered content-table" id="eventsTable">
+        <h2>Clientes suscritos: <?php echo $totalClients?></h2>
+        <button id="btn-export-excel" class="mb-3">Exportar tabla a Excel</button>
+        <table class="table table-bordered content-table" id="clientsTable">
             <thead>
                 <tr>
-                <th scope="col"  class="d-none">#</th>
+                <th scope="col"  class="d-none exclude">ID</th>
                 <th scope="col" class="fw-bold">Nombre</th>
                 <th scope="col" class="fw-bold">Apellido</th>
                 <!-- <th scope="col" class="fw-bold">Cédula</th> -->
                 <th scope="col" class="fw-bold">Teléfono</th>
                 <th scope="col" class="fw-bold">Correo Electrónico</th>
-                <th scope="col" class="fw-bold">Acción</th>
+                <th scope="col" class="fw-bold">Fecha de suscripción</th>
+                <th scope="col" class="fw-bold exclude">Acción</th>
                 </tr>
             </thead>
             <tbody >
@@ -66,13 +69,14 @@
                     <?php }
                     foreach($clients as $client){ ?>
                             <tr class="table-row">
-                                <td class="d-none"><?php echo $client['id']?></td>
+                                <td class="d-none exclude"><?php echo $client['id']?></td>
                                 <td data-title="Nombre:"><?php echo $client['firstName']?></td>
                                 <td data-title="Apellido:"><?php echo $client['lastName']?></td>
                                 <!-- <td data-title="Cédula:"><?php echo $client['identification']?></td> -->
                                 <td data-title="Teléfono:"><?php echo $client['phoneNumber']?></td>
                                 <td data-title="Correo Electrónico"><?php echo $client['email']?></td>
-                                <td class="d-flex justify-content-center align-items-center" data-title="Acción"><button class="table-button" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btn-delete-client"><i class="fa-solid fa-trash"></i></button></td>
+                                <td data-title="Fecha de suscripción"><?php echo $client['subscriptionDate']?></td>
+                                <td class="d-flex justify-content-center align-items-center exclude" data-title="Acción"><button class="table-button" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btn-delete-client"><i class="fa-solid fa-trash"></i></button></td>
                             </tr>
                         <?php } 
 
@@ -106,20 +110,62 @@
                 <nav aria-label="Page navigation example" id="pagination-demo">
                     <ul class="pagination">
                     <li class="page-item <?php echo ($page == 1 ? 'disabled' : null)?>">
-                        <a class="page-link" href="dashboardIndex.php?page=1" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
+                        <a class="page-link link-primary" href="dashboardIndex.php?page=1" aria-label="Previous">
+                            <span  aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
                     <li class="page-item <?php echo ($page == 1 ? 'disabled' : null)?>"><a class="page-link link-primary" href="dashboardIndex.php?page=<?php echo $page-1?>">Anterior</a></li>
-                        <?php for($i = 1; $i <= $totalPages; $i++){?>
                         
+                    <?php if($_GET['page'] - 5 >= 1){?>
+                            <li class="page-item disabled"><a class="page-link link-primary">...</a></li>
+                        <?php } ?>
+                    <!-- pagination before actual page -->
+                    <ul class="pagination d-flex flex-row-reverse">
+                        
+
+                        <?php for($i = $_GET['page']; $i > $_GET['page']-5; $i--){
+                            if ($i > 0) {?>
+                                <li class="page-item <?php echo($page == $i ? 'disabled' : null)?>"><a class="page-link link-primary" href="dashboardIndex.php?page=<?php echo $i ?>"><?php echo $i?></a></li>
+                        <?php } 
+                        }?>
+                        
+
+                        <?php 
+                            if($_GET['page'] > 5){
+
+                            }
+                        ?>
+                    </ul>
+                    <!-- pagination after actual page -->
+                    <ul class="pagination d-flex flex-row">
+                        
+
+                        <?php for($i = $_GET['page']+1; $i <= $_GET['page']+4; $i++){
+                            
+if ($i <= $totalPages) {
+    ?>
+                            
+                            
+                            
                             <li class="page-item <?php echo($page == $i ? 'disabled' : null)?>"><a class="page-link link-primary" href="dashboardIndex.php?page=<?php echo $i ?>"><?php echo $i?></a></li>
                     
-                        <?php }?>
+                        <?php }  }?>
+                        
+
+                        <?php 
+                            
+                        ?>
+                    </ul>
+                    <?php 
+                    ?>
+
+                        <?php if($_GET['page'] + 4 < $totalPages){?>
+                            <li class="page-item disabled"><a class="page-link link-primary">...</a></li>
+                        <?php } ?>
                         <li class="page-item <?php echo ($page == $totalPages ? 'disabled' : null)?>"><a class="page-link link-primary" href="dashboardIndex.php?page=<?php echo $page+1?>">Siguiente</a></li>
                         <li class="page-item <?php echo ($page == $totalPages ? 'disabled' : null)?>">
-                            <a class="page-link" href="dashboardIndex.php?page=<?php echo $totalPages?>" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
+                            <a class="page-link link-primary" href="dashboardIndex.php?page=<?php echo $totalPages?>" aria-label="Next">
+                                <span  aria-hidden="true">&raquo;</span>
                             </a>
                         </li>
                     </ul>
@@ -128,6 +174,23 @@
                     
                 
     </main></div>
+
+    <!-- THIS TABLE IS NOT VISIBLE -->
+    <table class="d-none" id="full-clients">
+                <thead>
+                    <tr>
+                    <th scope="col" class="fw-bold">Nombre</th>
+                    <th scope="col" class="fw-bold">Apellido</th>
+                    <!-- <th scope="col" class="fw-bold">Cédula</th> -->
+                    <th scope="col" class="fw-bold">Teléfono</th>
+                    <th scope="col" class="fw-bold">Correo Electrónico</th>
+                    <th scope="col" class="fw-bold">Fecha de suscripción</th>
+                    </tr>
+                </thead>
+                <tbody class="clients-body">
+
+
+                </tbody>
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -150,7 +213,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/701b1fbb0c.js" crossorigin="anonymous"></script>
     <!-- <script src="public/scripts/dashboard/dashboardEvents.js"></script> -->
-    <script src="js/dashbaordIndex.js"></script>
+    <script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
+        <script src="js/dashbaordIndex.js"></script>
 </div>
 </body>
 </html>

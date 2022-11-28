@@ -41,6 +41,7 @@ h2 {
   background-color: var(--primaryDarker);
 }
 
+.link-primary,
 .link-primary:link,
 .link-primary:visited {
   color: var(--primary);
@@ -56,4 +57,17 @@ h2 {
   color: var(--primary);
   background: none;
   border: none;
+}
+
+#btn-export-excel {
+  background-color: #008000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.3rem 0.6rem;
+  transition: background-color 0.13s ease-in;
+}
+
+#btn-export-excel:hover {
+  background-color: #005d00;
 }

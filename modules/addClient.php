@@ -89,7 +89,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $result = $stmt->get_result();
     $client = $result->fetch_all(MYSQLI_ASSOC);
     if(count($client) < 1){ 
-        
+        $firstName = ucwords(strtolower($firstName));
+        $lastName = ucwords(strtolower($lastName));
+       
         //ADD NEW USER
         $sql = "INSERT INTO clients (firstName, lastName, phoneNumber, email, subscribedForno) VALUES (?, ?, ?, ?, ?)";
         if(!$stmt = $db->prepare($sql)){
