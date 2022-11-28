@@ -2,7 +2,7 @@
     session_start();
     include_once('./modules/getClients.php');
     if(!isset($_SESSION['id'])){
-        header("Location: ./dashboardLogin.php?err=2");
+        header("Location: ./dashboard.php?err=2");
     }
     include('includes/header.php');
     include('modules/db.php');
@@ -19,7 +19,7 @@
     //If the page is 0 then it'll be 0-1*10 = 0 so the first result will be 0 and the last 10
     $start_from = ($page-1)*20;
 
-    $sql = 'SELECT * FROM clients WHERE subscribedForno = ? limit ? , ?';
+    $sql = 'SELECT * FROM clients WHERE subscribedForno = ? ORDER BY subscriptionDate DESC limit ? , ? ';
     $subscribedForno = 1;
 
 ?>
@@ -29,6 +29,12 @@
     <main class="col-11 m-auto col-lg-9 mt-4">
         <h1>CLUB FORNO</h1>
         <h2>Clientes suscritos: <?php echo $totalClients?></h2>
+        <p>Logueado como: <?php echo $_SESSION['name']?>
+    
+        <?php  if($_SESSION['level'] == 'read'){
+            echo "(Solo lectura)";
+        }?>
+    </p>
         <button id="btn-export-excel" class="mb-3">Exportar tabla a Excel</button>
         <table class="table table-bordered content-table" id="clientsTable">
             <thead>
@@ -40,7 +46,11 @@
                 <th scope="col" class="fw-bold">Teléfono</th>
                 <th scope="col" class="fw-bold">Correo Electrónico</th>
                 <th scope="col" class="fw-bold">Fecha de suscripción</th>
-                <th scope="col" class="fw-bold exclude">Acción</th>
+                <?php 
+                    if ($_SESSION['level'] == 'write') {
+                ?>
+                    <th scope="col" class="fw-bold exclude">Acción</th>
+                <?php }?>
                 </tr>
             </thead>
             <tbody >
@@ -76,7 +86,9 @@
                                 <td data-title="Teléfono:"><?php echo $client['phoneNumber']?></td>
                                 <td data-title="Correo Electrónico"><?php echo $client['email']?></td>
                                 <td data-title="Fecha de suscripción"><?php echo $client['subscriptionDate']?></td>
-                                <td class="d-flex justify-content-center align-items-center exclude" data-title="Acción"><button class="table-button" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btn-delete-client"><i class="fa-solid fa-trash"></i></button></td>
+                                <?php if($_SESSION['level'] == 'write'){?>
+                                    <td class="d-flex justify-content-center align-items-center exclude" data-title="Acción"><button class="table-button" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btn-delete-client"><i class="fa-solid fa-trash"></i></button></td>
+                                <?php }?>
                             </tr>
                         <?php } 
 
@@ -158,7 +170,7 @@ if ($i <= $totalPages) {
                     </ul>
                     <?php 
                     ?>
-
+                    <ul class="pagination">
                         <?php if($_GET['page'] + 4 < $totalPages){?>
                             <li class="page-item disabled"><a class="page-link link-primary">...</a></li>
                         <?php } ?>
@@ -171,10 +183,13 @@ if ($i <= $totalPages) {
                     </ul>
                     
                 </nav>
-                    
-                
-    </main></div>
+                <a href="modules/logout.php" class="btn btn-danger" id="btn-cerrar-sesion">Cerrar sesión</a>
 
+                
+    </main>
+
+</div>
+    <input type="hidden" value="$_SESSION['level']" class="user_level">
     <!-- THIS TABLE IS NOT VISIBLE -->
     <table class="d-none" id="full-clients">
                 <thead>
