@@ -229,6 +229,7 @@ if ($i <= $totalPages) {
     <script src="https://kit.fontawesome.com/701b1fbb0c.js" crossorigin="anonymous"></script>
     <!-- <script src="public/scripts/dashboard/dashboardEvents.js"></script> -->
     <script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
         <script src="js/dashbaordIndex.js"></script>
 </div>
 </body>

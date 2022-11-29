@@ -8,7 +8,6 @@ $(document).ready(function(){
     //Este bloque se ejecutará si no hay error en la petición
     request.done(function(response) {
         
-        console.log(response);
         response.forEach((client) => {
             $('.clients-body').append(
                 `<tr class="table-row">
@@ -32,7 +31,6 @@ $(document).ready(function(){
 //Eliminar doctores del directorio medico 
 let clientId;
 $(document).on('click','#btn-delete-client', function(e){
-    console.log('pressed');
     clientId = $(this).closest('tr').find('.d-none').text();
 })
 
@@ -47,7 +45,6 @@ $(document).on('click','#btn-delete-confirm',(e) => {
     })
 
     request.done(function(response){
-        console.log(response);
         if(response.result === 'success'){
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
@@ -65,17 +62,42 @@ $(document).on('click','#btn-delete-confirm',(e) => {
 
 // EXPORT TABLE TO EXCEL
 
-$('#btn-export-excel').on('click',()=>{
-    console.log('exportando');
-    
+const downloadTable = () => {
+    const clientsTable = document.getElementById('full-clients');
+    const wb = XLSX.utils.table_to_book(clientsTable);
 
-    exportTable();
+
+    // Get current date 
+    const date = new Date();
+
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+
+    let currentDate = `${day}-${month}-${year}`;
+
+
+    var wscols = [
+        {wch: 6}, // "characters"
+        {wpx: 50}, // "pixels"
+        ,
+        {hidden: true} // hide column
+    ];
+    wb['!cols'] = wscols;
+
+    /* Export to file (start a download) */
+    XLSX.writeFile(wb, `Clientes-club-forno-${currentDate}.xlsx`);
+}
+
+$('#btn-export-excel').on('click',()=>{
+    downloadTable();
 })
 
-function exportTable() {
-    $("#full-clients").table2excel({
-        name: "Club Forno Clientes",
-        filename: "file.xls",
-        preserveColors: false,
-    });
-  }
+// function exportTable() {
+//     $("#full-clients").table2excel({
+//         name: "Club Forno Clientes",
+//         filename: "file.xls",
+//         preserveColors: false,
+//     });
+//   }
+
