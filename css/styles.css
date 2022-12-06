@@ -658,10 +658,9 @@ li:not(.is-active.is-visible) .promo-options-menu + .promo-plates:hover {
   font-size: 1.1rem;
 }
 .header-images img:last-child {
-  max-width: 10rem;
+  max-width: 6rem;
   position: relative;
   top: -2rem;
-  left: -5rem;
   opacity: 0;
   transform: translateX(20px);
   transition: 0.3s all ease-in-out;
@@ -1073,7 +1072,7 @@ button {
       transform: scale(0.7);
     }
     100% {
-      transform: scale(1);
+      transform: scale(0.9);
     }
   }
   @keyframes circular {
