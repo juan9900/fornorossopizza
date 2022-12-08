@@ -1152,7 +1152,7 @@ button {
 }
 @media screen and (max-width: 380px) {
   .hero {
-    height: 33vh;
+    height: 24vh;
   }
 }
 @media screen and (max-width: 400px) {
