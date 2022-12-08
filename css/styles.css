@@ -612,6 +612,7 @@ li:not(.is-active.is-visible) .promo-options-menu + .promo-plates:hover {
 
 .header-images {
   display: flex;
+  position: relative;
 }
 .mobile-nav a {
   display: block;
@@ -1035,7 +1036,7 @@ button {
     background-color: #960e00;
   }
   .header-images img:last-child {
-    max-width: 12rem;
+    max-width: 7rem;
     object-fit: scale-down;
     opacity: 1;
     animation: crescendo 1.5s alternate infinite ease-in;
@@ -1168,6 +1169,12 @@ button {
   }
   .hamburguer {
     left: -6rem;
+  }
+
+  .header-images img:last-child {
+    position: absolute;
+    right: -20%;
+    top: 10%;
   }
 }
 @media screen and (min-width: 1500px) {
