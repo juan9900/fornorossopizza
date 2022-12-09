@@ -1,10 +1,10 @@
-<?php 
+<?php
 
 include('db.php');
 
-$response =[];
+$response = [];
 $errors = [];
-if(!isset($_POST['id'])){
+if (!isset($_POST['id'])) {
     array_push($errors, 'No ID of client received');
     // $response = [
     //     'status' => 'Fail',
@@ -14,26 +14,27 @@ if(!isset($_POST['id'])){
 }
 $sql = 'DELETE FROM clients WHERE id = ?';
 
-try{
-    if(!$stmt = $db->prepare($sql)){
+try {
+    if (!$stmt = $db->prepare($sql)) {
         throw new Exception('Error preparing sql', $db->errno);
     }
-    
-    if(!$stmt->bind_param('i',$_POST['id'])){
+
+    if (!$stmt->bind_param('i', $_POST['id'])) {
         throw new Exception('Error binding params', $db->errno);
     }
-    
-    if(!$stmt->execute()){
+
+    if (!$stmt->execute()) {
         throw new Exception('Error executing sql', $db->errno);
     }
 
     echo json_encode(array(
         'result' => 'success',
     ));
-    
-}catch(Exception $e){
+
+    $stmt->close();
+} catch (Exception $e) {
     echo json_encode(array(
         'error' => $e->getMessage(),
-        'code'=> $e->getCode(),
+        'code' => $e->getCode(),
     ));
 }

@@ -82,7 +82,7 @@
 
   <header class="hero">
     <div>
-      <video style="position: absolute;" src="./img/pantalla.mp4" loop autoplay preload muted width="100%" alt="Cargando..." title="Cargando..."></video>
+      <video style="position: absolute;" src="/img/pantalla.mp4" loop autoplay preload muted width="100%" alt="Cargando..." title="Cargando..."></video>
     </div>
 
     <div class="hamburger-container d-flex flex-row justify-content-center align-items-center">
@@ -98,7 +98,7 @@
     </div>
     <div class="container">
       <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="#"><img src="./img/logo2.png" alt=""></a>
+        <a class="navbar-brand" href="#"><img src="/img/logo2.png" alt=""></a>
         <!-- <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <div class="hamburguer">
@@ -424,7 +424,7 @@
           <h2 class="text-center mb-4 mb-lg-4">¡Únete al Club Forno!</h2>
           <div class="col-11 col-lg-8 mb-3 m-auto" id="liveAlertPlaceholder"></div>
 
-          <form class="formulario-email col-lg-8  col-11 m-auto mt-5" id="club-form">
+          <form class="formulario-email col-lg-8  col-11 m-auto mt-5" id="club-form" method="POST" action="/modules/addClient.php">
 
             <div class="mb-3">
               <input class="w-100 " type="text" name="firstName" id="firstName" placeholder="Nombre">

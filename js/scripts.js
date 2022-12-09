@@ -1,4 +1,3 @@
-console.log($('.promo-plates'));
 // boton de opciones de platos
 const btnPlatesOptions = $('.promo-plates-container');
 const platesOptions = $('.promo-plates');
@@ -15,21 +14,30 @@ var timerCloseAlert;
 
 // Enviar suscripcion al club forno
 $('#club-form').on('submit',(e) => {
-    console.log('submitted');
+    firstName = $('#firstName').val();
+    lastName = $('#lastName').val();
+    email = $('#email').val();
+    phoneNumber = $('#phoneNumber').val();
+    
     e.preventDefault();
     console.log($('#club-form').serialize());
     $.ajax({
         type: "POST",
-        url: 'modules/addClient.php',
-        data: $('#club-form').serialize(),
+        url: './modules/addClient.php',
+        data: {
+            firstName,
+            lastName,
+            email,
+            phoneNumber
+        },
         dataType: 'json',
-        success: (data) => {
-            console.log(data);
-            if(data.status === 'success'){
+        success: (response) => {
+            console.log(response);
+            if(response.status === 'success'){
                 $('.club-form-container').addClass('d-none');
                 $('.subscribed-text').removeClass('d-none');
             }else{
-                alert(data.errors,'danger');
+                alert(response.errors,'danger');
                 timer = setTimeout(() => {
                     $('#liveAlertPlaceholder').fadeOut(500, function(){
                         $(this).empty().show();
@@ -37,8 +45,9 @@ $('#club-form').on('submit',(e) => {
                 },4000)
             }
         },
-        error: (e) => {
-            console.log('error: ' , e);
+        error: (error) => {
+            console.log('no llego a subirse');
+            console.log('error: ' , error);
         },
       });
 })
@@ -84,7 +93,6 @@ const alert = (message, type) => {
         //so the new alert has its own 3 seconds.
         clearTimeout(timer);
         $('#liveAlertPlaceholder').empty();
-        console.log('Emptied');
         alertPlaceholder.append(wrapper);
        
     }
