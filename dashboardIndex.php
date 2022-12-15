@@ -19,7 +19,7 @@ if (isset($_GET['page']) && $_GET['page'] >= 1) {
 //If the page is 0 then it'll be 0-1*10 = 0 so the first result will be 0 and the last 10
 $start_from = ($page - 1) * 20;
 
-$sql = 'SELECT * FROM clients WHERE subscribedForno = ? ORDER BY subscriptionDate DESC limit ? , ? ';
+$sql = 'SELECT * FROM clients ORDER BY subscriptionDate DESC limit ? , ? ';
 $subscribedForno = 1;
 
 ?>
@@ -63,19 +63,25 @@ $subscribedForno = 1;
                     }
 
                     // $stmt->bind_param('ii',$start_from,$num_per_page);
-                    if (!$stmt->bind_param('iii', $subscribedForno, $start_from, $num_per_page)) {
+                    if (!$stmt->bind_param('ii', $start_from, $num_per_page)) {
                         echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
                     }
                     // $stmt->execute();
                     if (!$stmt->execute()) {
                         echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
                     }
+
+
                     $result = $stmt->get_result();
+
+
                     $clients = $result->fetch_all(MYSQLI_ASSOC);
+
                     if (count($clients) < 1) { ?>
                         <div class="alert alert-warning" role="alert">
                             No se encontraron clientes.
                         </div>
+
                     <?php }
                     foreach ($clients as $client) { ?>
                         <tr class="table-row">

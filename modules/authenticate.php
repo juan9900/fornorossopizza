@@ -3,16 +3,12 @@ include_once('db.php');
 if (!isset($_POST['username'], $_POST['password'])) {
     header("Location: ../dashboard.php");
 }
-
 if ($stmt = $db->prepare('SELECT id, password from users WHERE username = ?')) {
     $stmt->bind_param('s', $_POST['username']);
     $stmt->execute();
     // Store the result so we can check if the account exists in the database.
     $stmt->store_result();
 }
-
-
-
 if ($stmt->num_rows > 0) {
     $stmt->bind_result($id, $password);
     $stmt->fetch();

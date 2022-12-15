@@ -20,10 +20,9 @@ $('#club-form').on('submit',(e) => {
     phoneNumber = $('#phoneNumber').val();
     
     e.preventDefault();
-    console.log($('#club-form').serialize());
     $.ajax({
         type: "POST",
-        url: './modules/addClient.php',
+        url: '/modules/addClient.php',
         data: {
             firstName,
             lastName,
@@ -32,7 +31,6 @@ $('#club-form').on('submit',(e) => {
         },
         dataType: 'json',
         success: (response) => {
-            console.log(response);
             if(response.status === 'success'){
                 $('.club-form-container').addClass('d-none');
                 $('.subscribed-text').removeClass('d-none');
@@ -46,7 +44,6 @@ $('#club-form').on('submit',(e) => {
             }
         },
         error: (error) => {
-            console.log('no llego a subirse');
             console.log('error: ' , error);
         },
       });

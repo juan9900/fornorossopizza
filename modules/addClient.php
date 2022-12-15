@@ -156,13 +156,6 @@ function test_input($data)
 </head>
 
 <body>
-    <h1>Hoola</h1>
-    <?php echo $numberRows ?>
-    <?php echo $sql ?>
-    <?php echo $firstName ?>
-    <?php echo $lastName ?>
-    <?php echo $phoneNumber ?>
-    <?php echo $email ?>
 
 </body>
 
