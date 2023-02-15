@@ -3,6 +3,22 @@ const btnPlatesOptions = $('.promo-plates-container');
 const platesOptions = $('.promo-plates');
 const listArrow = $('.arrow-down');
 
+console.log('loaded');
+const bgMusic = $('#bgMusic')[0];
+const musicBtn = $('#music-btn');
+const pauseImg = $('.pause-img');
+    bgMusic.volume = 0.05; // sets the volume to 5%
+$(musicBtn).on('click',function(){
+    console.log(this);
+    if(bgMusic.paused){
+        bgMusic.play();
+        $(pauseImg).attr('src','/img/Simple_Music.-whitesvg.svg');
+
+    }else{
+        bgMusic.pause();
+        $(pauseImg).attr('src','/img/Simple_Music.-nosvg.svg');
+    }
+})
 $(btnPlatesOptions).on('click', () => {
     $(platesOptions).toggleClass('active');
     $(btnPlatesOptions).toggleClass('active');
@@ -18,6 +34,7 @@ $('#club-form').on('submit',(e) => {
     lastName = $('#lastName').val();
     email = $('#email').val();
     phoneNumber = $('#phoneNumber').val();
+    birthdate = $('#birthdate').val();
     
     e.preventDefault();
     $.ajax({
@@ -27,7 +44,8 @@ $('#club-form').on('submit',(e) => {
             firstName,
             lastName,
             email,
-            phoneNumber
+            phoneNumber,
+            birthdate,
         },
         dataType: 'json',
         success: (response) => {
@@ -95,3 +113,23 @@ const alert = (message, type) => {
     }
 
 }
+
+$(document).ready(()=>{
+    const date = new Date();
+    console.log("🚀 ~ file: scripts.js:117 ~ $ ~ date", date)
+    const today = date.toLocaleDateString();
+    var year = date.getFullYear();
+    console.log("🚀 ~ file: scripts.js:119 ~ $ ~ year", year)
+    var month = date.getMonth() + 1;
+    console.log("🚀 ~ file: scripts.js:121 ~ $ ~ month", month)
+    var  day = date.getDate();
+    console.log("🚀 ~ file: scripts.js:123 ~ $ ~ day", day)
+    
+    {month < 10 ? month = '0' + month : null};
+    {day < 10 ? day = '0' + day : null}
+    console.log(month);
+    console.log(day);
+
+    console.log(today);
+    $('#birthdate').attr('max', `${year}-${month}-${day}`);
+})

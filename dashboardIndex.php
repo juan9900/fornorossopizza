@@ -46,6 +46,8 @@ $subscribedForno = 1;
                         <th scope="col" class="fw-bold">Teléfono</th>
                         <th scope="col" class="fw-bold">Correo Electrónico</th>
                         <th scope="col" class="fw-bold">Fecha de suscripción</th>
+                        <th scope="col" class="fw-bold">Fecha de nacimiento</th>
+
                         <?php
                         if ($_SESSION['level'] == 'write') {
                         ?>
@@ -92,6 +94,8 @@ $subscribedForno = 1;
                             <td data-title="Teléfono:"><?php echo $client['phoneNumber'] ?></td>
                             <td data-title="Correo"><?php echo $client['email'] ?></td>
                             <td data-title="Suscripción"><?php echo $client['subscriptionDate'] ?></td>
+                            <td data-title="Nacimiento"><?php echo $client['birthdate'] ?></td>
+
                             <?php if ($_SESSION['level'] == 'write') { ?>
                                 <td class="d-flex justify-content-center align-items-center exclude" data-title="Acción"><button class="table-button" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btn-delete-client"><i class="fa-solid fa-trash"></i></button></td>
                             <?php } ?>

@@ -2,23 +2,24 @@
 <html lang="es">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; ISO-8859-1">
-  <meta name="DC.Language" scheme="RFC1766" content="Spanish">
-  <meta name="author" content="FV">
-  <meta name="description" content="Restaurante">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="keywords" content="">
-  <meta name="Resource-type" content="Document">
-  <meta name="Revisit-after" content="2 days">
-  <meta name="robots" content="All">
-  <title>Forno</title>
   <meta charset="utf-8">
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="es">
+  <meta name="keywords" content="Fornorosso, Forno Rosso, Maracaibo, Forno Rosso Maracaibo">
+  <meta name="author" content="FV">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="robots" content="All">
+  <meta name="description" content="Sitio web oficial de Forno Rosso. Ubicados en la ciudad de Maracaibo, C.C. Terraza 77, Lun-Dom desde las 12:00 P.M.">
+  <title>Forno Rosso</title>
   <script src="https://kit.fontawesome.com/819330974d.js" crossorigin="anonymous"></script>
   <link rel="icon" type="image/x-icon" href="img/favicon.ico">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
   <link rel="stylesheet" href="./css/styles.css">
 
 </head>
@@ -31,21 +32,28 @@
     <a data-bs-toggle="modal" data-bs-target="#exampleModal44"><img style="max-width:12rem; cursor: pointer;" src="./img/botones-paginaweb-2.png" alt=""></a>
     <a href="#gallery"><img style="max-width:12rem;" src="./img/botones-paginaweb-3.png" alt=""></a>
     <a href="#nosotros"><img style="max-width:12rem;" src="./img/botones-paginaweb-4.png" alt=""></a>
+    <a href="#clubForno"><img style="max-width:12rem;" src="./img/club-forno.png" alt=""></a>
+
     <a href="#contacto"><img style="max-width:12rem;" src="./img/botones-paginaweb-5.png" alt=""></a>
 
   </nav>
   <div class="side-buttons">
     <div class="boton-arriba-contenedor">
-      <a href="https://api.whatsapp.com/send/?phone=584126439148&text&app_absent=0&text=¡Hola, Forno lover! Acá podrás hacer la reservación para tu visita e indicarnos tu pedido si deseas delivery o pick-up.⁣ 🍕" target="_blank">
-        <div class="volver-arriba">
-          <i class="fab fa-whatsapp"></i>
-        </div>
-      </a>
+      <button id="music-btn" class="play-music">
+        <img class="pause-img" src="/img/Simple_Music.-whitesvg.svg" alt="">
+      </button>
     </div>
     <div class="boton-arriba-contenedor" id="actualizacion-contacto">
       <a href="https://quikpago.com/store/showcase/products?market=Nqs0mHjXdrVBPVgh6q28" target="__blank">
         <div class="pedidos">
           <img src="./img/pedidos.png" alt="">
+        </div>
+      </a>
+    </div>
+    <div class="boton-arriba-contenedor">
+      <a href="https://api.whatsapp.com/send/?phone=584126439148&text&app_absent=0&text=¡Hola, Forno lover! Acá podrás hacer la reservación para tu visita e indicarnos tu pedido si deseas delivery o pick-up.⁣ 🍕" target="_blank">
+        <div class="volver-arriba">
+          <i class="fab fa-whatsapp"></i>
         </div>
       </a>
     </div>
@@ -129,6 +137,10 @@
     </div>
   </header>
   <main>
+    <audio id="bgMusic" autoplay loop>
+      <source src="/audio/cancion-forno.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
     <section id="nosotros" class="nosotros">
       <div class="container">
         <div class="row">
@@ -140,7 +152,7 @@
               <img src="./img/carafeliz.png" style="position: absolute;" alt="">
             </div>
             <div class="box">
-              <img src="./img/nosotros3.png" alt="">
+              <img src="./img/NOSOTROS-nuevo.png" alt="">
             </div>
             <div class="cassete">
               <img src="./img/cassette2.png" alt="">
@@ -179,7 +191,7 @@
       <div class="promo-image">
       </div>
       <div class="container">
-        <img src="./img/promos.png" style="width: 15rem; position: absolute; z-index: 999;" alt="">
+        <!-- <img src="./img/promos.png" style="width: 15rem; position: absolute; z-index: 999;" alt=""> -->
         <div id="card-slider" class="splide">
           <div class="splide__track" id="splide_trackk">
             <ul class="splide__list">
@@ -222,7 +234,8 @@
 
                 </div>
               </li>
-              <li class="splide__slide">
+              <li class="splide__slide position-relative">
+                <img class="promo-icon" src="/img/PROMO LUNCH.png" alt="">
                 <div class="splide__slide__container d-flex flex-column justify-content-between">
                   <div>
                     <div class="header-images">
@@ -236,7 +249,7 @@
                   </div>
 
                   <div class="texto">
-                    <span>DESDE $6</span>
+                    <span>DESDE $7</span>
                     <br>
                     <span>INCLUYE BEBIDA</span>
                     <br>
@@ -250,44 +263,44 @@
                     </div>
 
                     <div class="promo-plates flex-column justify-content-start align-items-start">
-                      <div class="plato">
-                        <p>PASTA AMERICANA
-                          <img src="img/pasta-americana2.png" alt="pasta americana">
 
-                        </p>
-                      </div>
                       <div class="plato">
-                        <p>PASTA AL FORNO
+                        <p>PASTA AL FORNO CLÁSICA
                           <img src="img/pastaforno.png" alt="pasta al forno">
 
                         </p>
                       </div>
                       <div class="plato">
-                        <p>COTOLETTA PARMESANA CON PAPAS FRITAS
+                        <p>ESCALOPA DE POLLO A LA PARMESANA
                           <img src="img/colettaParmesana2.png" alt="colettaParmesana">
+                        </p>
+                      </div>
+                      <div class="plato">
+                        <p>BBQ RIBS
+                          <img src="img/6WEB.png" alt="cotoletta clasica con papas fritas">
 
                         </p>
                       </div>
                       <div class="plato">
-                        <p>COTOLETTA CLÁSICA CON PAPAS FRITAS
-                          <img src="img/colletaclasica2.png" alt="cotoletta clasica con papas fritas">
-
-                        </p>
-                      </div>
-                      <div class="plato">
-                        <p>PIZZA COTTO PER TE
+                        <p>PIZZA MARGARITA PER TE
                           <img src="img/pizzaperte.png" alt="Pizza per te">
 
                         </p>
                       </div>
                       <div class="plato">
-                        <p>FAJITAS DE POLLO
-                          <img src="img/fajitasdepollo2.png" alt="fajitas de pollo">
+                        <p>POLLO SUPREMO
+                          <img src="img/8WEB.png" alt="Pizza per te">
 
                         </p>
                       </div>
                       <div class="plato">
-                        <p>BURGER CLÁSICA
+                        <p>CHIMI CHURRI STEAK
+                          <img src="img/7WEB.png" alt="Pizza per te">
+
+                        </p>
+                      </div>
+                      <div class="plato">
+                        <p>HAMBURGUESA CLÁSICA
                           <img src="img/burguerclasica.png" alt="burger classic">
 
                         </p>
@@ -296,7 +309,7 @@
                   </div>
                 </div>
               </li>
-              <li class="splide__slide">
+              <li class="splide__slide promo-pizza">
                 <div class="splide__slide__container d-flex flex-column justify-content-between">
                   <div>
                     <div class="header-images">
@@ -304,14 +317,21 @@
                       <img src="./img/onlyYou.png">
                     </div>
                     <div class="title-card">
-                      <h4 class="toyota-bold cards-servicios-title">PROMO ONLY <br> YOU</h4>
+                      <h4 class="toyota-bold cards-servicios-title">PROMOS ONLY YOU <br> Y ALL FOR U</h4>
                     </div>
                   </div>
 
                   <div class="texto">
-                    <span>PIZZA PERSONAL CON JAMÓN, REFRESCO Y UNA BARQUILLA DE MANTECADO</span>
+                    <span>PIZZA PERSONAL CON JAMÓN, REFRESCO Y UNA BARQUILLA DE MANTECADO <small>(ONLY YOU)</small></span>
                     <br>
                     <!-- <p style="    font-family: 'ULMGROTESK-EXTRABOLD';	text-align: left !important; color: white;">Promos Pizza</p> -->
+                  </div>
+                  <div class="texto">
+                    <span>Pizza gigante de 45 cm con 2 ingredientes (seleccionados)
+                      + 6 tequeños y 4 bebidas no alcohólicas <small>(ALL FOR U)</small></span>
+                    <br>
+                    <!-- <p style="    font-family: 'ULMGROTESK-EXTRABOLD';	text-align: left !important; color: white;">Promos Pizza</p> -->
+
                   </div>
                   <div class="texto">
                     <p class="promo-horario">DISPONIBLE DE DOMINGO A JUEVES DE 05:00 P.M. A 10:00 P.M.</p>
@@ -343,50 +363,7 @@
                   </div>
                 </div>
               </li>
-              <!-- <li class="splide__slide">
-                <div class="splide__slide__container d-flex flex-column justify-content-between">
-                  <div>
-                    <div class="header-images">
-                      <img src="./img/pizzaSlide.png" style="max-width: 12rem;">
-                      <img src="./img/BEER PIZZA.png">
-                    </div>
-                    <div class="title-card">
-                      <h4 class="toyota-bold cards-servicios-title">PROMO PIZZA &<br> BEER</h4>
-                    </div>
-                  </div>
 
-                  <div class="texto">
-                    <span>1 PIZZA PER TUTTI CON 1 INGREDIENTE + 4 CERVEZAS POLAR PILSEN</span>
-                    <br>
-
-                  </div>
-                  <div class="texto">
-                    <p class="promo-horario">DISPONIBLE DE LUNES A JUEVES DE 05:00 P.M. A 10:00 P.M.</p>
-
-                  </div>
-                </div>
-              </li> -->
-
-              <!-- <li class="splide__slide">
-                <div class="splide__slide__container d-flex flex-column justify-content-between">
-                  <div class="header-images">
-                    <img src="./img/pizzaSlide.png" style="max-width: 12rem;">
-                    <img src="img/pizzza piu.png">
-                  </div>
-                  <div class="title-card">
-                    <h4 class="toyota-bold cards-servicios-title">PROMO PIZZA <br> PIÚ</h4>
-                  </div>
-                  <div class="texto">
-                    <span>CON LA COMPRA DE UNA PIZZA GIGANTE(SELECCIONADA) DE 45CM RECIBES UNA PIZZA PER TE DE 30CM DEL MISMO TIPO</span>
-                    <br>
-
-                  </div>
-                  <div class="texto">
-                    <p class="promo-horario">DISPONIBLE TODOS LOS DOMINGOS DE 5:00 P.M. A 10:00 P.M.</p>
-
-                  </div>
-                </div>
-              </li> -->
 
               <li class="splide__slide">
                 <div class="splide__slide__container d-flex flex-column justify-content-between">
@@ -409,20 +386,145 @@
                 </div>
               </li>
 
+              <li class="splide__slide  position-relative">
+                <img class="promo-icon" src="/img/AFTER WORK.png" alt="">
 
+                <div class="splide__slide__container d-flex flex-column justify-content-between">
+                  <div>
+                    <div class="header-images">
+                      <img src="./img/glass-cheers2.png" style="max-width: 12rem;">
+                      <img src="./img/forno-beer.png">
+                    </div>
+                    <div class="title-card">
+                      <h4 class="toyota-bold cards-servicios-title">FORNO BEER</h4>
+                    </div>
+                  </div>
 
+                  <div class="texto">
+                    <span>disfruta de nuestra promoción Forno Beer con una Polar Pilsen por solo $0.70. <br>Refréscate con nuestra selección de cervezas y pasa un buen rato con tus amigos. ¡Te esperamos!</span>
+                    <br>
+                    <!-- <p style="    font-family: 'ULMGROTESK-EXTRABOLD';	text-align: left !important; color: white;">Promos Pizza</p> -->
+
+                  </div>
+                  <div class="texto">
+                    <p class="promo-horario">DISPONIBLE DE LUNES A MIÉRCOLES TODO EL DÍA</p>
+
+                  </div>
+                </div>
+              </li>
+              <li class="splide__slide position-relative">
+                <img class="promo-icon" src="/img/AFTER WORK.png" alt="">
+
+                <div class="splide__slide__container d-flex flex-column justify-content-between">
+                  <div>
+                    <div class="header-images">
+                      <img src="./img/glass-cheers2.png" style="max-width: 12rem;">
+                      <img src="./img/solera.png">
+                    </div>
+                    <div class="title-card">
+                      <h4 class="toyota-bold cards-servicios-title">SOLERA DAY</h4>
+                    </div>
+                  </div>
+
+                  <div class="texto">
+                    <span>¡Disfruta de una pizza Per Te y llévate una cerveza Solera completamente gratis! <br>Aprovecha esta promoción para acompañar tu comida con una refrescante bebida.</span>
+                    <br>
+                    <!-- <p style="    font-family: 'ULMGROTESK-EXTRABOLD';	text-align: left !important; color: white;">Promos Pizza</p> -->
+
+                  </div>
+                  <div class="texto">
+                    <p class="promo-horario">Todos los domingos</p>
+
+                  </div>
+                </div>
+              </li>
+              <li class="splide__slide position-relative">
+                <img class="promo-icon" src="/img/AFTER WORK.png" alt="">
+                <div class="splide__slide__container d-flex flex-column justify-content-between">
+                  <div>
+                    <div class="header-images">
+                      <img src="./img/glass-cheers2.png" style="max-width: 12rem;">
+                      <img src="./img/ladies-day.png">
+                    </div>
+                    <div class="title-card">
+                      <h4 class="toyota-bold cards-servicios-title">LADIES DAY</h4>
+                    </div>
+                  </div>
+
+                  <div class="texto">
+                    <span>Todas las mujeres pueden disfrutar de copas de vino por $1.50 y prosecco por $2 en Forno Rosso. Ven con tus amigas y relájate mientras disfrutas de una buena bebida.</span>
+                    <br>
+                    <!-- <p style="    font-family: 'ULMGROTESK-EXTRABOLD';	text-align: left !important; color: white;">Promos Pizza</p> -->
+
+                  </div>
+                  <div class="texto">
+                    <p class="promo-horario">TODOS LOS JUEVES DESDE LAS 4:00 P.M</p>
+
+                  </div>
+                </div>
+              </li>
+              <li class="splide__slide position-relative">
+                <img class="promo-icon" src="/img/AFTER WORK.png" alt="">
+                <div class="splide__slide__container d-flex flex-column justify-content-between">
+                  <div>
+                    <div class="header-images">
+                      <img src="./img/glass-cheers2.png" style="max-width: 12rem;">
+                      <img src="./img/mojistos-day.png">
+                    </div>
+                    <div class="title-card">
+                      <h4 class="toyota-bold cards-servicios-title">MOJITOS DAY</h4>
+                    </div>
+                  </div>
+
+                  <div class="texto">
+                    <span> Los viernes son el día de los mojitos, disfrútalos por solo $1, ya sea el clásico o con un toque de frutas. <br> ¡Ven a probar nuestros deliciosos mojitos y disfruta de una experiencia única!</span>
+                    <br>
+                    <!-- <p style="    font-family: 'ULMGROTESK-EXTRABOLD';	text-align: left !important; color: white;">Promos Pizza</p> -->
+
+                  </div>
+                  <div class="texto">
+                    <p class="promo-horario">TODOS LOS VIERNES DESDE LAS 4:00 P.M</p>
+
+                  </div>
+                </div>
+              </li>
+              <li class="splide__slide position-relative">
+                <img class="promo-icon" src="/img/AFTER WORK.png" alt="">
+                <div class="splide__slide__container d-flex flex-column justify-content-between">
+                  <div>
+                    <div class="header-images">
+                      <img src="./img/glass-cheers2.png" style="max-width: 12rem;">
+                      <img src="./img/buchanans-night.png">
+                    </div>
+                    <div class="title-card">
+                      <h4 class="toyota-bold cards-servicios-title">BUCHANAN'S NIGHT</h4>
+                    </div>
+                  </div>
+
+                  <div class="texto">
+                    <span>disfruta de una noche con música en vivo de nuestro DJ a partir de las 7:00 pm y una botella de Buchanan's por solo $50. <br> Ven con tus amigos y pasa una noche espectacular en nuestro restaurante. ¡Te esperamos!</span>
+                    <br>
+                    <!-- <p style="    font-family: 'ULMGROTESK-EXTRABOLD';	text-align: left !important; color: white;">Promos Pizza</p> -->
+
+                  </div>
+                  <div class="texto">
+                    <p class="promo-horario">TODOS LOS SÁBADOS</p>
+
+                  </div>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
       </div>
     </section>
-    <section class="contact-zone">
+    <section class="contact-zone" id="clubForno">
       <div class="container">
         <div class="club-form-container">
           <h2 class="text-center mb-4 mb-lg-4">¡Únete al Club Forno!</h2>
           <div class="col-11 col-lg-8 mb-3 m-auto" id="liveAlertPlaceholder"></div>
 
-          <form class="formulario-email col-lg-8  col-11 m-auto mt-5" id="club-form" method="POST" action="/modules/addClient.php">
+          <form class="formulario-email col-lg-8  col-11 m-auto mt-5" id="club-form">
 
             <div class="mb-3">
               <input class="w-100 " type="text" name="firstName" id="firstName" placeholder="Nombre">
@@ -443,6 +545,12 @@
               <input type="text" class="phone-input form-control" placeholder="Número de teléfono" name="phoneNumber" id="phoneNumber">
 
             </div>
+            <div class="input-group mb-3 d-flex flex-row align-items-center">
+              <!-- <span class="input-group-text">+58</span> -->
+              <!-- <input class="" type="number" name="phoneNumber" id="phoneNumber" placeholder="Número de teléfono"> -->
+              <label class="birthday-label pe-1" for="birthdate">Fecha de nacimiento: </label>
+              <input type="date" id="birthdate" required max="">
+            </div>
 
             <div class="encuesta">
               <button type="submit">Enviar</button>
@@ -451,6 +559,11 @@
           </form>
         </div>
         <h2 class="text-center mb-0 pb-5 subscribed-text d-none">¡Te has registrado con éxito en el <br> Club Forno!</h2>
+      </div>
+
+      <div class="text-center pb-4">
+        <a class="survey-btn" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSd2B79a6GCjqyIm1IZBBahCj4w9VYfqHXbZtf6w463i8IG1xg/viewform?usp=sf_link">COMPLETA NUESTRA ENCUESTA DE SATISFACCIÓN DE SERVICIO</a>
+
       </div>
     </section>
 
@@ -473,10 +586,23 @@
               <span>Viernes a sábado</span> <br>
               <span class="hora" style="font-weight: 700;">12:00 m. a 11:30 p.m.</span>
             </div>
+            <!-- WhatsApp (ícono) 0412-6439148
+Instagram @fornorossove 
+TikTok @fornorosso
+Youtube / Facebook Forno Rosso Maracaibo  -->
+
 
           </div>
         </div>
       </div>
+      </div>
+      <div class="socials d-flex flex-row flex-wrap align-items-center justify-content-center">
+        <a href=""> 0412-6439148</a>
+        <a href=""><img src="img/instagram2.png"></a>
+        <a href=""><img src="img/tiktok.png"></a>
+        <a href=""><img src="img/youtube2.png"></a>
+        <a href=""><img src="img/facebook3.png"></a>
+
       </div>
     </section>
   </main>
@@ -553,10 +679,10 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <img src="./img/menu/menu1.webp" loading="lazy" style="width:100%;" alt="">
-          <img src="./img/menu/menu2.webp" loading="lazy" style="width:100%;" alt="">
-          <img src="./img/menu/menu3.webp" loading="lazy" style="width:100%;" alt="">
-          <img src="./img/menu/menu4.webp" loading="lazy" style="width:100%;" alt="">
+          <img src="./img/menu/menu1.png" loading="lazy" style="width:100%;" alt="">
+          <img src="./img/menu/menu2.png" loading="lazy" style="width:100%;" alt="">
+          <img src="./img/menu/menu3.png" loading="lazy" style="width:100%;" alt="">
+          <img src="./img/menu/menu4.png" loading="lazy" style="width:100%;" alt="">
         </div>
       </div>
     </div>
@@ -567,7 +693,6 @@
   <script src="./js//slides2.js"></script>
   <script src="./js/scrollreveal.js"></script>
   <script src="./js/scroll.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="./js/scripts.js"></script>
 </body>
 
