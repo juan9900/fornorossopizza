@@ -177,6 +177,8 @@ textarea {
   padding: 0.5rem 1rem;
   border-radius: 0.3em;
   margin: 0 auto;
+  display: block;
+  width: 40%;
 }
 
 .survey-btn:hover {
@@ -222,7 +224,6 @@ textarea {
 }
 .redes-sociales img {
   display: flex;
-  margin-top: -2rem;
 }
 /* .pedidos {
   text-align: right;
@@ -305,8 +306,12 @@ textarea {
   background-size: cover;
 }
 .gallery- {
-  margin-top: -9rem;
+  margin-top: -2rem;
   overflow-x: hidden;
+}
+
+.label {
+  height: 0;
 }
 .label img {
   position: relative;
@@ -752,6 +757,15 @@ li:not(.is-active.is-visible) .promo-options-menu + .promo-plates:hover {
   height: 20rem;
   background-position: center;
   background-size: cover;
+}
+@media screen and (max-width: 1024px) {
+  .redes-sociales {
+    display: none;
+  }
+
+  .survey-btn {
+    width: 70%;
+  }
 }
 @media screen and (min-width: 1024px) {
   .modal-content {
