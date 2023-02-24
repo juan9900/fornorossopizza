@@ -20,11 +20,16 @@ body {
   max-width: 100%;
   overflow-x: hidden;
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+}
 .hero {
   background-image: url("../img/pantallaxd.mp4");
-  height: 120vh;
   background-position: center;
   background-size: cover;
+  position: absolute;
 }
 .thunder-us {
   position: absolute;
@@ -85,6 +90,27 @@ body {
 .pedidos {
   animation: crescendoPedido 1s alternate infinite ease-in;
 }
+
+.navbar {
+  position: absolute;
+  top: 0;
+}
+
+#tv-video {
+  width: 100%;
+  position: relative;
+  z-index: -1;
+  margin-bottom: -1rem;
+}
+
+.site-logo {
+  position: absolute;
+  left: 5%;
+}
+
+.hero:first-child {
+  height: 100%;
+}
 .navbar-brand img {
   max-width: 8rem;
 }
@@ -95,7 +121,6 @@ a {
   position: fixed;
   /* top: -22rem; */
   width: 0rem;
-  margin-top: 0%;
   position: relative;
   z-index: 99;
 }
@@ -203,7 +228,7 @@ textarea {
   background-color: #deb659;
 }
 .volver-arriba i {
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: white;
   transition: 0.2s;
 }
@@ -255,8 +280,8 @@ textarea {
   z-index: 99999999;
 }
 
-.side-buttons > div {
-  margin-bottom: 2.5rem;
+.side-buttons div {
+  margin-bottom: 1rem;
 }
 .side-buttons img {
   width: 4rem;
@@ -279,10 +304,17 @@ textarea {
   }
 }
 .nosotros {
-  background-image: url("../img/bombillos.gif");
   height: 70rem;
-  background-position: center;
-  background-size: cover;
+}
+
+#bombillos-video {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  object-fit: cover;
+  height: 100%;
 }
 .cassete img {
   width: 27rem;
@@ -353,8 +385,8 @@ button {
   position: fixed;
   top: 10%;
   right: 4%;
-  width: 4.2rem;
-  height: 4.2rem;
+  width: 3.5rem;
+  height: 3.5rem;
   z-index: 1;
   border-radius: 100%;
   z-index: 999999;
@@ -363,7 +395,7 @@ button {
 }
 .hamburger {
   display: block;
-  width: 35px;
+  width: 33px;
   cursor: pointer;
   appearance: none;
   background: none;
@@ -377,16 +409,16 @@ button {
   content: "";
   display: block;
   width: 100%;
-  height: 5px;
+  height: 4px;
   background-color: white !important;
   margin: 6px 0;
   transition: 0.4s;
 }
 .hamburger.is-active:before {
-  transform: rotate(-45deg) translate(-8px, 6px);
+  transform: rotate(-45deg) translate(-6px, 7px);
 }
 .hamburger.is-active:after {
-  transform: rotate(45deg) translate(-9px, -8px);
+  transform: rotate(45deg) translate(-7px, -9px);
 }
 .hamburger.is-active .bar {
   opacity: 0;
@@ -787,7 +819,6 @@ li:not(.is-active.is-visible) .promo-options-menu + .promo-plates:hover {
     margin-top: 9%;
   }
   .redes-sociales {
-    margin-top: 12%;
   }
   /* .pedidos {
     bottom: 4rem;
@@ -932,7 +963,6 @@ li:not(.is-active.is-visible) .promo-options-menu + .promo-plates:hover {
     left: 6rem;
   }
   .redes-sociales {
-    margin-top: 6%;
   }
   .content {
     position: relative;
@@ -1032,12 +1062,8 @@ button {
 }
 
 @media screen and (max-width: 700px) {
-  .hero {
-    height: 27vh;
-  }
-
   .hamburger-container {
-    top: 5%;
+    top: 4%;
   }
 
   .pedidos img {
@@ -1069,7 +1095,6 @@ button {
     height: 85vh;
   }
   .redes-sociales {
-    margin-top: -18%;
   }
   #logo-animation img {
     max-width: 3rem;
@@ -1134,7 +1159,7 @@ button {
   }
 
   .side-buttons .pause-img {
-    width: 2.9rem;
+    width: 2.6rem;
   }
 
   #music-btn {
@@ -1142,8 +1167,8 @@ button {
     height: 3rem;
   }
   .volver-arriba {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 3rem;
+    height: 3rem;
   }
 
   .subscribed-text {
@@ -1215,6 +1240,10 @@ button {
     width: 8%;
     transition: all 0.15s linear;
   }
+  .promo-icon {
+    left: 5%;
+    width: 50%;
+  }
 }
 
 @media screen and (min-width: 600px) and (max-width: 852px) {
@@ -1230,14 +1259,8 @@ button {
   .smile-us {
     display: block;
   }
-  .hero {
-    height: 110vh;
-  }
 }
 @media screen and (max-width: 380px) {
-  .hero {
-    height: 24vh;
-  }
 }
 @media screen and (max-width: 400px) {
   .box img {
@@ -1248,7 +1271,6 @@ button {
     left: -2rem;
   }
   .redes-sociales {
-    margin-top: -26%;
   }
   .hamburguer {
     left: -6rem;
@@ -1300,15 +1322,11 @@ button {
   }
 }
 @media screen and (min-width: 701px) and (max-width: 1023px) {
-  .hero {
-    height: 65vh;
-  }
   .content {
     top: 7rem;
     left: -5rem;
   }
   .redes-sociales {
-    margin-top: -14%;
   }
   .nosotros {
     height: 90vh;
@@ -1316,15 +1334,8 @@ button {
   .cassete img {
     left: -4rem;
   }
-
-  .hero {
-    height: 42vh !important;
-  }
 }
 @media screen and (min-width: 2000px) {
-  .hero {
-    height: 125vh;
-  }
   .content {
     top: 27rem;
     left: -11rem;
