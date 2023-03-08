@@ -17,10 +17,10 @@ $(musicBtn).on('click',function(){
         $(pauseImg).attr('src','/img/Simple_Music.-nosvg.svg');
     }
 })
-$(btnPlatesOptions).on('click', () => {
-    $(platesOptions).toggleClass('active');
-    $(btnPlatesOptions).toggleClass('active');
-    $(listArrow).toggleClass('rotate');
+$(btnPlatesOptions).on('click', function(){
+    $(this).children("div.promo-plates").toggleClass('active');
+    $(this).toggleClass('active');
+    $(this).closest('.arrow-down').toggleClass('rotate');
 })
 
 const alertPlaceholder = $('#liveAlertPlaceholder')

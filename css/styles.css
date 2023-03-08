@@ -18,7 +18,7 @@
 html,
 body {
   max-width: 100%;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 img {
@@ -1204,17 +1204,20 @@ button {
 }
 
 @media screen and (max-width: 850px) {
-  .splide__track {
+  /* .splide__track {
     overflow: inherit;
-  }
+    overflow-x: clip;
+  } */
   .promo-plates {
     opacity: 1;
     left: 0;
     top: 100%;
     width: 100%;
-    height: fit-content;
+    height: 10rem;
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
     z-index: 99999999;
+    overflow-x: hidden;
+    overflow-y: scroll;
   }
 
   .promo-plates.active {
