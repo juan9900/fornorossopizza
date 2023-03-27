@@ -328,8 +328,24 @@ textarea {
   top: 6rem;
 }
 
+.box {
+  z-index: 3;
+}
+
+.box p {
+  margin-top: 10rem;
+  background: #000000b5;
+  color: #eeeeee;
+  font-family: "Poppins-Regular";
+  padding: 4rem 2rem 2rem 2rem;
+  font-size: 1.2em;
+  text-align: justify;
+}
+
 .box img {
-  max-width: 34rem;
+  position: absolute;
+  width: 100%;
+  bottom: 90%;
 }
 .gallery {
   background-image: url("../img/fondo4.png");
@@ -814,10 +830,7 @@ li:not(.is-active.is-visible) .promo-options-menu + .promo-plates:hover {
     position: relative;
     top: 10rem;
   }
-  .box img {
-    max-width: 39rem;
-    margin-top: 9%;
-  }
+
   .redes-sociales {
   }
   /* .pedidos {
@@ -1092,8 +1105,9 @@ button {
   }
 
   .nosotros {
-    height: 85vh;
+    height: 100%;
   }
+
   .redes-sociales {
   }
   #logo-animation img {
@@ -1103,8 +1117,21 @@ button {
     margin-left: 3rem !important;
     margin-right: 3rem !important;
   }
+
+  .box {
+    margin-top: 5rem;
+  }
+
+  .box p {
+    font-size: 0.95em;
+    margin-top: 2rem;
+    padding-top: 2rem;
+  }
+
   .box img {
-    max-width: 24rem;
+    position: absolute;
+    width: 100%;
+    bottom: 95%;
   }
   .cassete img {
     width: 12rem;
@@ -1266,9 +1293,6 @@ button {
 @media screen and (max-width: 380px) {
 }
 @media screen and (max-width: 400px) {
-  .box img {
-    max-width: 21rem;
-  }
   .content {
     top: -3rem;
     left: -2rem;
