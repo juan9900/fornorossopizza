@@ -464,7 +464,7 @@ button {
   font-weight: 700;
 }
 .footer-texto {
-  height: 3rem;
+  padding: 1rem 0;
   display: flex;
   color: #ffff;
   justify-content: center;
